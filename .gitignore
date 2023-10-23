@@ -1,0 +1,17 @@
+# ignore all
+*
+
+# exceptions to the ignore all statement
+!/.gitignore
+
+!*.go
+!go.sum
+!go.mod
+
+!README.md
+!LICENSE
+
+# !Makefile
+
+# recurse to all subdirectories
+!*/
