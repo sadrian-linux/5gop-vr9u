@@ -1,4 +1,4 @@
-package models
+package model
 
 import (
 	"fmt"
@@ -7,11 +7,8 @@ import (
 
 // TODO: Modify the function to expect the variables bellow as arguments
 func GetWorkspaceID(org string, workspace string, token string) {
-
-	url := fmt.Sprintf(
-		"https://app.terraform.io/api/v2/organizations/%s/workspaces/%s",
-		org,
-		workspace)
+	fmt.Println("GetWorkspaceID() called", org, workspace, token)
+	url := fmt.Sprintf("https://app.terraform.io/api/v2/organizations/%s/workspaces/%s", org, workspace)
 
 	// client := &http.Client{}
 
@@ -21,9 +18,7 @@ func GetWorkspaceID(org string, workspace string, token string) {
 		return
 	}
 
-	// request.Header.Add("Authorization", "Bearer %s", token)
-	// request.Header.Add("Content-Type: application/vnd.api+json")
-	request.Header.Add("Authorization", "Bearer Token")
+	request.Header.Add("Authorization", "Bearer "+token)
 	request.Header.Add("Content-Type", "application/vnd.api+json")
 
 	fmt.Println(request)

@@ -7,9 +7,9 @@ import (
 )
 
 func CreateArchive() (string, error) {
-
+	fmt.Println("CreateArchive() called")
 	//TODO: compose the value of archive_name dynamically
-	archive := "./test.tar.gz"
+	archive := "/tmp/test.tar.gz"
 	cmd := exec.Command("tar", "zcf", archive, ".")
 
 	var stdout, stderr bytes.Buffer
