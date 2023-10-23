@@ -1,4 +1,4 @@
-###Usage
+### Usage
 ```sh
 go build
 go install
