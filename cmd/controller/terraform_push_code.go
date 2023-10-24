@@ -14,14 +14,8 @@ var terraformPushCodeCmd = &cobra.Command{
 	Use:   "terraformPushCode",
 	Short: "push terraform configuration files",
 	Long:  `orb terraformPushCode -o=<org_name> -w=<workspace_name> -t=<token>`,
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
-
-		// exit if unexpected arguments are provided
-		if len(args) != 0 {
-			fmt.Println("Error: no arguments expected.")
-			cmd.Usage()
-			os.Exit(1)
-		}
 
 		// call CreateArchive()
 		archive := model.CreateArchive()
