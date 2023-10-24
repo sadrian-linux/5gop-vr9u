@@ -1,9 +1,9 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-*/
 package main
 
-import "orb/cmd"
+import (
+	"orb/cmd"
+	_ "orb/cmd/controller"
+)
 
 func main() {
 	cmd.Execute()

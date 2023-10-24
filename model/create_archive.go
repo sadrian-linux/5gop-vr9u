@@ -3,10 +3,11 @@ package model
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"os/exec"
 )
 
-func CreateArchive() (string, error) {
+func CreateArchive() string {
 	fmt.Println("CreateArchive() called")
 	//TODO: compose the value of archive_name dynamically
 	archive := "/tmp/test.tar.gz"
@@ -19,8 +20,8 @@ func CreateArchive() (string, error) {
 	err := cmd.Run()
 
 	if err != nil {
-		return "", fmt.Errorf("Error: %v\n%s", err, stderr.String())
+		log.Fatalf("error: %v\n%s", err, stderr.String())
 	}
 
-	return archive, nil
+	return archive
 }
