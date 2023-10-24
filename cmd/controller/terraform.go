@@ -1,8 +1,9 @@
-package cmd
+package controller
 
 import (
 	"fmt"
 	"log"
+	"orb/cmd"
 	"orb/model"
 
 	"github.com/spf13/cobra"
@@ -28,16 +29,19 @@ to quickly create a Cobra application.`,
 		// fmt.Println(argument)
 
 		// call CreateArchive()
-		model.CreateArchive()
-		org, _ := cmd.Flags().GetString("org")
-		workspace, _ := cmd.Flags().GetString("workspace")
-		token, _ := cmd.Flags().GetString("token")
+		archive_path := model.CreateArchive()
+		log.Printf("Archive Path is: %s", archive_path)
 
 		// call GetWorkspaceID()
 		// primitive checks
 		// TODO: enforce complex checks
+		org, _ := cmd.Flags().GetString("org")
+		workspace, _ := cmd.Flags().GetString("workspace")
+		token, _ := cmd.Flags().GetString("token")
+
 		if org != "" && workspace != "" && token != "" {
-			model.GetWorkspaceID(org, workspace, token)
+			workspace_id := model.GetWorkspaceID(org, workspace, token)
+			log.Printf("Workspace ID: %s", workspace_id)
 		} else {
 			log.Fatal("GetWorkspaceID: Invalid or missing token, org or workspace.")
 		}
@@ -46,7 +50,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	rootCmd.AddCommand(terraformPushCodeCmd)
+	cmd.RootCmd.AddCommand(terraformPushCodeCmd)
 
 	// flag definitions
 	terraformPushCodeCmd.Flags().StringP("token", "t", "", "access token")
