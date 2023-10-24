@@ -52,6 +52,4 @@ func init() {
 	terraformPushCodeCmd.Flags().StringP("token", "t", "", "access token")
 	terraformPushCodeCmd.Flags().StringP("org", "o", "", "organization name")
 	terraformPushCodeCmd.Flags().StringP("workspace", "w", "", "workspace name")
-	// terraformPushCodeCmd.PersistentFlags().String("foo", "", "A help for foo")
-	// terraformPushCodeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
