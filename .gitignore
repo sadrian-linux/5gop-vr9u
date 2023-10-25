@@ -4,6 +4,7 @@
 # exceptions to the ignore all statement
 !/.gitignore
 
+!response_samples
 !*.go
 !go.sum
 !go.mod
