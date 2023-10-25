@@ -33,8 +33,6 @@ to quickly create a Cobra application.`,
 		log.Printf("Archive Path is: %s", archive_path)
 
 		// call GetWorkspaceID()
-		// primitive checks
-		// TODO: enforce complex checks
 		org, _ := cmd.Flags().GetString("org")
 		workspace, _ := cmd.Flags().GetString("workspace")
 		token, _ := cmd.Flags().GetString("token")
@@ -42,6 +40,9 @@ to quickly create a Cobra application.`,
 		if org != "" && workspace != "" && token != "" {
 			workspace_id := model.GetWorkspaceID(org, workspace, token)
 			log.Printf("Workspace ID: %s", workspace_id)
+
+			json_payload := model.CreateConfigVersionPayload()
+			model.UploadConfigVersion(workspace_id, json_payload, token)
 		} else {
 			log.Fatal("GetWorkspaceID: Invalid or missing token, org or workspace.")
 		}
@@ -56,6 +57,4 @@ func init() {
 	terraformPushCodeCmd.Flags().StringP("token", "t", "", "access token")
 	terraformPushCodeCmd.Flags().StringP("org", "o", "", "organization name")
 	terraformPushCodeCmd.Flags().StringP("workspace", "w", "", "workspace name")
-	// terraformPushCodeCmd.PersistentFlags().String("foo", "", "A help for foo")
-	// terraformPushCodeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
